@@ -9,7 +9,7 @@ _ft_read:
 set_err:
         push r10
         mov r10, rax
-        call __error
+        call ___error
         mov [rax], r10
         push r10
         mov rax, -1
