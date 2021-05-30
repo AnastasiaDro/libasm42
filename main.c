@@ -158,5 +158,11 @@ int main()
     printf(" original: |    my:\n");
     printf("  %s    %s\n", t_buff, m_buff);
 
+    printf("TEST 4. From STDIN\n max buff_size = %d\n", 49);
+    m_readbytes = ft_read(0, m_buff, 49);
+    printf("m_buff = \n%s\n", m_buff);
+
+    printf("TEST 5. From STDIN\n max buff_size = %d\n", 49);
+
     return 0;
 }
