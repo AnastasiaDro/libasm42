@@ -134,10 +134,29 @@ int main()
     char *m_buff = calloc(50, sizeof (char));
     char *t_buff = calloc(50, sizeof (char));
     int fd = open("mfile", O_RDONLY);
-   // int m_readbytes = ft_read(fd, m_buff, 5);
+    int m_readbytes = ft_read(fd, m_buff, 5);
+    close(fd);
+     fd = open("mfile", O_RDONLY);
     int t_readbytes = read(fd, t_buff, 5);
+    close(fd);
     printf(" original: |    my:\n");
     printf("  %s        %s\n", t_buff, m_buff);
+
+    printf("TEST 2. Continue reading 1 - their, 2 - my \nFrom file __mfile__\n");
+    fd = open("mfile", O_RDONLY);
+    t_readbytes = read(fd, t_buff, 5);
+    m_readbytes = ft_read(fd, m_buff, 5);
+    close(fd);
+    printf(" original: |    my:\n");
+    printf("  %s        %s\n", t_buff, m_buff);
+
+    printf("TEST 3. Continue reading 1 - my, 2 - their \nFrom file __mfile__\n");
+    fd = open("mfile", O_RDONLY);
+    m_readbytes = ft_read(fd, m_buff, 8);
+    t_readbytes = read(fd, t_buff, 8);
+    close(fd);
+    printf(" original: |    my:\n");
+    printf("  %s    %s\n", t_buff, m_buff);
 
     return 0;
 }
