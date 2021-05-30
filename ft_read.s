@@ -4,7 +4,7 @@ section .text
 _ft_read:
          mov rax, 0x2000003
          syscall
-         jc set_err
+         jl set_err
          ret
 set_err:
         push r10

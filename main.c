@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <strings.h>
 #include <sys/fcntl.h>
+#include <sys/errno.h>
 
 ssize_t ft_write(int fildes, const void *buf, size_t nbyte);
 size_t ft_strlen(const char *s);
@@ -162,7 +163,19 @@ int main()
     m_readbytes = ft_read(0, m_buff, 49);
     printf("m_buff = \n%s\n", m_buff);
 
-    printf("TEST 5. From STDIN\n max buff_size = %d\n", 49);
+    printf("TEST 5. Error: fd = -1\n");
+    fd = -1;
+    printf("THEIR RESULTS: \n");
+    t_readbytes = read(fd, m_buff, 8);
+    printf("readbytes = %d\n", t_readbytes);
+    printf("errno = %d\n", errno);
+
+    errno = 0;
+    printf("setted errno to zero: errno = %d\n", errno);
+    printf("MY RESULTS: \n");
+    m_readbytes = read(fd, m_buff, 8);
+    printf("readbytes = %d\n", m_readbytes);
+    printf("errno = %d\n", errno);
 
     return 0;
 }
